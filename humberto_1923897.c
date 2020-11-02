@@ -16,7 +16,7 @@ void insereCarro(TCarro *carro);
 
 
 void main(){
-    int key, i, n, carro_select, acao;
+    int key, i, n, carro_select, acao, insert_check = 0;
     char proc;
     TCarro carro[100];
     FILE *arq;
@@ -33,57 +33,74 @@ void main(){
 
     //menu principal
     while (key != 3){
-        printf("Ol�! Seja bem-vindo � concession�ria PG DRIFT RE42!\n\nSelecione quais das op��es abaixo deseja realizar: \n1 - Inserir Carro;\n 2 - Selecionar Carro;\n3 - Sair;\n");
+        printf("\nOlá! Seja bem-vindo à concessionária PG DRIFT RE42!\n\nSelecione quais das opções abaixo deseja realizar: \n1 - Inserir Carro;\n 2 - Selecionar Carro;\n3 - Sair;\n");
+        setbuf(stdin, NULL);
+        fflush(stdin);
         scanf("%d", &key);
         //Inserir o carro
         if(key == 1){
-                printf("Quantos carros deseja inserir?\n");
-                scanf("%d", &n);
-                    for(i = 0; i < n; i++){
-                        setbuf(stdin, NULL);
-                        fflush(stdin);
-                        printf("\nInsira o nome do modelo: ");
-                        gets(carro[i].modelo);
-                        printf("\nInsira a marca: ");
-                        gets(carro[i].marca);
-                        printf("\nAutom�tico ou manual (digite A para autom�tico, M para manual): ");
-                        scanf("%c", &carro[i].cambio);
-                        printf("\nAno: ");
-                        scanf("%d", &carro[i].ano);
-                        printf("\nPre�o: R$ ");
-                        scanf("%lf", &carro[i].preco);
-                        printf("\nCarro %s %s inserido com sucesso!\n",carro[i].marca, carro[i].modelo);
-                    }
+            insert_check++;
+            printf("Quantos carros deseja inserir?\n");
+            scanf("%d", &n);
+                for(i = 0; i < n; i++){
+                    setbuf(stdin, NULL);
+                    fflush(stdin);
+                    printf("\nInsira o nome do modelo: ");
+                    gets(carro[i].modelo);
+                    printf("\nInsira a marca: ");
+                    gets(carro[i].marca);
+                    printf("\nAutomático ou manual (digite A para automático, M para manual): ");
+                    scanf("%c", &carro[i].cambio);
+                    printf("\nAno: ");
+                    scanf("%d", &carro[i].ano);
+                    printf("\nPreço: R$ ");
+                    scanf("%lf", &carro[i].preco);
+                    printf("\nCarro %s %s inserido com sucesso!\n",carro[i].marca, carro[i].modelo);
+                    setbuf(stdin, NULL);
+                    fflush(stdin);
+                }
 
         }else if(key == 2){
-            printf("Carros dispon�veis: \n");
-                    for(i = 0; i < n; i++){
-                        printf("\n%d -\nMarca: %s\nModelo: %s\nCambio: %c\nAno: %d\nPreco: R$ %.2f\n", i+1, carro[i].marca, carro[i].modelo, carro[i].cambio, carro[i].ano, carro[i].preco);
-        }
-        printf("\nSelecione o carro: ");
-        scanf("%d", &carro_select);
-        carro_select = carro_select -
-        1;
-        printf("\nDeseja: \n1 - Vender Carro;\n2 - Deletar carro;\n");
-        scanf("%d", &acao);
-        if(acao == 1){
-            printf("\n%d -\nMarca: %s\nModelo: %s\nCambio: %c\nAno: %d\nPreco: R$ %.2f\n", i+1, carro[carro_select].marca, carro[carro_select].modelo, carro[carro_select].cambio, carro[carro_select].ano, carro[carro_select].preco);
-            printf("\nDeseja proceder? S ou N ");
-            scanf("%c", &proc);
-            if(proc == 'S'){
-                printf("\nCarro vendido!\n");
-            }else if(proc == 'N'){
-                printf("\nVoltando.\n");
+            if(insert_check == 0){
+                printf("\nAinda não foi inserido nenhum carro. Volte ao Menu Inicial e insira!\n");
+            }else{
+            printf("Carros disponíveis: \n");
+            for(i = 0; i < n; i++){
+                printf("\n%d -\nMarca: %s\nModelo: %s\nCambio: %c\nAno: %d\nPreco: R$ %.2f\n", i+1, carro[i].marca, carro[i].modelo, carro[i].cambio, carro[i].ano, carro[i].preco);
             }
-        }else if(acao == 2){
-            printf("\nDeseja proceder? S ou N ");
-            scanf("%c", &proc);
-            if(proc == 'S'){
-                printf("\nCarro deletado!\n");
-            }else if(proc == 'N'){
-                printf("\nVoltando.\n");
+            printf("\nSelecione o carro: ");
+            scanf("%d", &carro_select);
+            carro_select = carro_select -
+            1;
+            printf("\nDeseja: \n1 - Vender Carro;\n2 - Deletar carro;\n");
+            setbuf(stdin, NULL);
+            fflush(stdin);
+            scanf("%d", &acao);
+            if(acao == 1){
+                printf("\n%d -\nMarca: %s\nModelo: %s\nCambio: %c\nAno: %d\nPreco: R$ %.2f\n", i+1, carro[carro_select].marca, carro[carro_select].modelo, carro[carro_select].cambio, carro[carro_select].ano, carro[carro_select].preco);
+                printf("\nDeseja proceder? S ou N ");
+                setbuf(stdin, NULL);
+                fflush(stdin);
+                scanf("%c", &proc);
+                if(proc == 'S'){
+                    printf("\nCarro vendido!\n");
+                }else if(proc == 'N'){
+                    printf("\nVoltando.\n");
+                }
+            }else if(acao == 2){
+                printf("\nDeseja proceder? S ou N ");
+                setbuf(stdin, NULL);
+                fflush(stdin);
+                scanf("%c", &proc);
+                if(proc == 'S'){
+                    printf("\nCarro deletado!\n");
+                    insert_check--;
+                }else if(proc == 'N'){
+                    printf("\nVoltando.\n");
+                }
             }
         }
+    
     }
 }
 }
