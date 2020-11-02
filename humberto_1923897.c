@@ -32,7 +32,7 @@ void main(){
 
 
     //menu principal
-    while (key != 3){
+    while (key != 3){ 
         printf("\nOlá! Seja bem-vindo à concessionária PG DRIFT RE42!\n\nSelecione quais das opções abaixo deseja realizar: \n1 - Inserir Carro;\n 2 - Selecionar Carro;\n3 - Sair;\n");
         setbuf(stdin, NULL);
         fflush(stdin);
