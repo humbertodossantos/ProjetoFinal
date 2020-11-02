@@ -1,3 +1,6 @@
+//Humberto Correia Gomes dos Santos
+//1923897
+//https://github.com/humbertodossantos/ProjetoFinal/blob/main/humberto_1923897.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -30,7 +33,7 @@ void main(){
 
     //menu principal
     while (key != 3){
-        printf("Olá! Seja bem-vindo à concessionária PG DRIFT RE42!\n\nSelecione quais das opções abaixo deseja realizar: \n1 - Inserir Carro;\n 2 - Selecionar Carro;\n3 - Sair;\n");
+        printf("Olï¿½! Seja bem-vindo ï¿½ concessionï¿½ria PG DRIFT RE42!\n\nSelecione quais das opï¿½ï¿½es abaixo deseja realizar: \n1 - Inserir Carro;\n 2 - Selecionar Carro;\n3 - Sair;\n");
         scanf("%d", &key);
         //Inserir o carro
         if(key == 1){
@@ -43,17 +46,17 @@ void main(){
                         gets(carro[i].modelo);
                         printf("\nInsira a marca: ");
                         gets(carro[i].marca);
-                        printf("\nAutomático ou manual (digite A para automático, M para manual): ");
+                        printf("\nAutomï¿½tico ou manual (digite A para automï¿½tico, M para manual): ");
                         scanf("%c", &carro[i].cambio);
                         printf("\nAno: ");
                         scanf("%d", &carro[i].ano);
-                        printf("\nPreço: R$ ");
+                        printf("\nPreï¿½o: R$ ");
                         scanf("%lf", &carro[i].preco);
                         printf("\nCarro %s %s inserido com sucesso!\n",carro[i].marca, carro[i].modelo);
                     }
 
         }else if(key == 2){
-            printf("Carros disponíveis: \n");
+            printf("Carros disponï¿½veis: \n");
                     for(i = 0; i < n; i++){
                         printf("\n%d -\nMarca: %s\nModelo: %s\nCambio: %c\nAno: %d\nPreco: R$ %.2f\n", i+1, carro[i].marca, carro[i].modelo, carro[i].cambio, carro[i].ano, carro[i].preco);
         }
