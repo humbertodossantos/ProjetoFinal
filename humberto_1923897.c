@@ -43,7 +43,7 @@ void main(){
         //Inserir o carro
         if(key == 1){
             insert_check++;
-            printf("Quantos carros deseja inserir?\n");
+            printf("\nA inserção só pode ser realizada uma vez.\nQuantos carros deseja inserir?\n");
             scanf("%d", &n);
                 for(i = 0; i < n; i++){
                     setbuf(stdin, NULL);
