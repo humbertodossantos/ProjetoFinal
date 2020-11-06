@@ -1,6 +1,11 @@
 //Humberto Correia Gomes dos Santos
 //1923897
+//O código abaixo tem como objetivo simular um sistema de concessionária de automóveis.
+//Utiliza: vetor, arquivo, structs, estruturas de decisão e repetição, junto a ferramentas da linguagem C.
+//A nota fiscal da compra encontra-se no mesmo diretório que o código em C.
+//Não possui um arquivo executável.
 //https://github.com/humbertodossantos/ProjetoFinal/blob/main/humberto_1923897.c
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,8 +16,6 @@ typedef struct carro{
     char cambio, modelo[50], marca[20];
     double preco;
 }TCarro;
-
-void insereCarro(TCarro *carro);
 
 
 void main(){
@@ -70,8 +73,7 @@ void main(){
             }
             printf("\nSelecione o carro: ");
             scanf("%d", &carro_select);
-            carro_select = carro_select -
-            1;
+            carro_select = carro_select - 1;
             printf("\nDeseja: \n1 - Vender Carro;\n2 - Deletar carro;\n");
             setbuf(stdin, NULL);
             fflush(stdin);
@@ -84,6 +86,9 @@ void main(){
                 scanf("%c", &proc);
                 if(proc == 'S'){
                     printf("\nCarro vendido!\n");
+                    insert_check--;
+                    fprintf(arq, "\nMarca: %s\nModelo: %s\nCambio: %c\nAno: %d\nPreco: R$ %.2f\n", carro[carro_select].marca, carro[carro_select].modelo, carro[carro_select].cambio, carro[carro_select].ano, carro[carro_select].preco);
+                    printf("\nObrigado! Para acessar a nota fiscal da sua compra, procure o arquivo texto com o nome \nhumberto1923897_notafiscal_concessionaria_pg_drift_re42.txt\n, no mesmo diretório onde se encontra o arquivo C.\n");
                 }else if(proc == 'N'){
                     printf("\nVoltando.\n");
                 }
